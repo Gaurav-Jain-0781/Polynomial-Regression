@@ -15,6 +15,7 @@ y = dataset.iloc[:,2].values
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X, y)
+y_predict = regressor.predict(X)
 
 # Building the Polynomial Regressor 
 from sklearn.preprocessing import PolynomialFeatures
@@ -22,3 +23,11 @@ polynomial = PolynomialFeatures(degree=2)
 x_polynomial = polynomial.fit_transform(X)
 polynomial_regressor = LinearRegression()
 polynomial_regressor.fit(x_polynomial, y)
+
+# Visualising results of Linear Regressor 
+plt.scatter(X, y, color="red")
+plt.plot(X, y_predict)
+plt.title("Salary VS Position")
+plt.xlabel("Position Level")
+plt.ylabel("Salary")
+plt.show()
